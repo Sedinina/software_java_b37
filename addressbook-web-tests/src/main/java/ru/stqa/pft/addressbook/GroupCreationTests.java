@@ -13,7 +13,7 @@ public class GroupCreationTests extends TestBase {
         fillGroupForm(new GroupDate("test1", "test2", "test3"));
         submitGroupCreation();
         returnToGroupPage();
-        wd.findElement(By.linkText("Logout")).click();
+        exit();
     }
 
 
