@@ -16,6 +16,10 @@ public class HelperBase {
         wd.findElement(locator).click();
     }
 
+    protected void alert(){
+        wd.switchTo().alert().accept();
+    }
+
     protected void type(String locator, String text) {
         click(By.name(locator));
         wd.findElement(By.name(locator)).clear();
