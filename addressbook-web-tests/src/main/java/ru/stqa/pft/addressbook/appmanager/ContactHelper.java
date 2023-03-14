@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactDate;
+import ru.stqa.pft.addressbook.model.GroupDate;
 
 public class ContactHelper extends HelperBase {
 
@@ -35,7 +36,7 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
     public void selectContact() {
-        click(By.xpath("//tr[4]/td/input"));
+        click(By.xpath("//table[@id='maintable']/tbody/tr[4]/td/input"));
     }
 
     public void deleteSelectedContacts() {
@@ -50,4 +51,18 @@ public class ContactHelper extends HelperBase {
     public void submitContactModification() {
         click(By.xpath("//input[22]"));
     }
+
+    public void createContact(ContactDate contact, boolean creation) {
+     initNewContact();
+        fillContactForm(contact, creation);
+        pushEnter();
+    }
+
+    public boolean isThereAContant() {
+        return isElementPresent(By.xpath("//tr[4]/td/input"));
+    }
+
+
+
 }
+
