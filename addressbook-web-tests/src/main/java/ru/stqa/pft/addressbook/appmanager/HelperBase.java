@@ -22,8 +22,13 @@ public class HelperBase {
 
     protected void type(String locator, String text) {
         click(By.name(locator));
-        wd.findElement(By.name(locator)).clear();
-        wd.findElement(By.name(locator)).sendKeys(text);
+        if (text != null) {
+            String existingText = wd.findElement(By.name(locator)).getAttribute("value");
+            if (!text.equals(existingText)) {
+                wd.findElement(By.name(locator)).clear();
+                wd.findElement(By.name(locator)).sendKeys(text);
+            }
+        }
     }
 
     public boolean isElementPresent(By by) {
